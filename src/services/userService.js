@@ -16,8 +16,14 @@ const getByEmail = async (email) => {
   return user;
 };
 
+const allUsers = async () => {
+  const users = await User.findAll({ attributes: { exclude: ['password'] } });
+  return users;
+};
+
 module.exports = {
   loginUser,
   newUser,
   getByEmail,
+  allUsers,
 };
