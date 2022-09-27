@@ -8,6 +8,7 @@ const app = express();
 
 app.use(express.json());
 
+app.post('/login', userValidation.login, userController.login);
 app.post('/user', userValidation.validation, userValidation.checkEmail, userController.newUser);
 
 // ...
