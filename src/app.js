@@ -27,6 +27,7 @@ app.post(
 app.get('/categories', tokenFile.tokenValidation, categoryController.allCategories);
 
 app.post('/post', tokenFile.tokenValidation, postValidation.validation, postController.newPost);
+app.get('/post', tokenFile.tokenValidation, postController.allPosts);
 
 // ...
 
