@@ -16,8 +16,16 @@ const allCategories = async () => {
   return categories;
 };
 
+/*
+const getById = async (id) => {
+  const category = await Category.findByPk(id);
+  return category;
+};
+*/
+
 module.exports = {
   newCategory,
   getByName,
   allCategories,
+  // getById,
 };

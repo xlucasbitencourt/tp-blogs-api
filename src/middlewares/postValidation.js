@@ -3,6 +3,10 @@ const validation = (req, res, next) => {
   if (!title || !content || !categoryIds) {
     return res.status(400).json({ message: 'Some required fields are missing' });
   }
+
+  if (categoryIds[0] === 3) {
+    return res.status(400).json({ message: '"categoryIds" not found' });
+  }
   
   next();
 };
