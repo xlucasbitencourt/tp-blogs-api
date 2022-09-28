@@ -22,6 +22,7 @@ app.post(
   categoryValidation.validation,
   categoryController.newCategory,
 );
+app.get('/categories', tokenFile.tokenValidation, categoryController.allCategories);
 
 // ...
 
