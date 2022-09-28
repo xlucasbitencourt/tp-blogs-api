@@ -4,6 +4,8 @@ const userValidation = require('./middlewares/userValidation');
 const tokenFile = require('./middlewares/tokenFile');
 const categoryController = require('./controllers/categoryController');
 const categoryValidation = require('./middlewares/categoryValidation');
+const postController = require('./controllers/postController');
+const postValidation = require('./middlewares/postValidation');
 
 // ...
 
@@ -23,6 +25,8 @@ app.post(
   categoryController.newCategory,
 );
 app.get('/categories', tokenFile.tokenValidation, categoryController.allCategories);
+
+app.post('/post', tokenFile.tokenValidation, postValidation.validation, postController.newPost);
 
 // ...
 
