@@ -25,6 +25,7 @@ app.post(
 );
 app.get('/categories', tokenFile.tokenValidation, categoryController.allCategories);
 
+app.get('/post/search', tokenFile.tokenValidation, postController.searchPost);
 app.post('/post', tokenFile.tokenValidation, postValidation.validation, postController.newPost);
 app.get('/post', tokenFile.tokenValidation, postController.allPosts);
 app.get('/post/:id', tokenFile.tokenValidation, postController.getById);
