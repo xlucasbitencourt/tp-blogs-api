@@ -7,8 +7,6 @@ const categoryValidation = require('./middlewares/categoryValidation');
 const postController = require('./controllers/postController');
 const postValidation = require('./middlewares/postValidation');
 
-// ...
-
 const app = express();
 
 app.use(express.json());
@@ -29,9 +27,11 @@ app.get('/categories', tokenFile.tokenValidation, categoryController.allCategori
 app.post('/post', tokenFile.tokenValidation, postValidation.validation, postController.newPost);
 app.get('/post', tokenFile.tokenValidation, postController.allPosts);
 app.get('/post/:id', tokenFile.tokenValidation, postController.getById);
+app.put(
+  '/post/:id',
+   tokenFile.tokenValidation,
+   postValidation.editValidation,
+   postController.updatePost,
+);
 
-// ...
-
-// É importante exportar a constante `app`,
-// para que possa ser utilizada pelo arquivo `src/server.js`
 module.exports = app;
