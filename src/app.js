@@ -15,6 +15,7 @@ app.post('/login', userValidation.login, userController.login);
 app.post('/user', userValidation.validation, userValidation.checkEmail, userController.newUser);
 app.get('/user', tokenFile.tokenValidation, userController.allUsers);
 app.get('/user/:id', tokenFile.tokenValidation, userController.userById);
+app.delete('/user/me', tokenFile.tokenValidation, userController.deleteUser);
 
 app.post(
   '/categories',
