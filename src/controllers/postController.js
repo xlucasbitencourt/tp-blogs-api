@@ -27,9 +27,17 @@ const updatePost = async (req, res) => {
   res.status(200).json(post);
 };
 
+const deletePost = async (req, res) => {
+  const { id } = req.params;
+  const post = await postService.deletePost(id);
+  if (!post) return res.status(404).json({ message: 'Post does not exist' });
+  res.status(204).json();
+};
+
 module.exports = {
   newPost,
   allPosts,
   getById,
   updatePost,
+  deletePost,
 };

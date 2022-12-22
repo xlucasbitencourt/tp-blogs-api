@@ -33,5 +33,11 @@ app.put(
    postValidation.editValidation,
    postController.updatePost,
 );
+app.delete(
+  '/post/:id',
+  tokenFile.tokenValidation,
+  postValidation.deleteValidation, 
+  postController.deletePost,
+);
 
 module.exports = app;
