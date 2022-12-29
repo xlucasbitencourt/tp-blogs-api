@@ -9,7 +9,7 @@ services:
     # Define um user específico, diferente de root para a execução dos comandos
     # user: eval
     # Nome do container para facilitar execução
-    container_name: blogs_api
+    container_name: tp_blogs_api
     # Mesmo que `docker run -t`
     tty: true
     # Mesmo que `docker run -i`
@@ -17,7 +17,7 @@ services:
     # Substitui o comando padrão da imagem do node
     command: bash
     # Restarta a imagem caso algo a faça parar
-    restart: always
+    # restart: always
     # Diretório padrão de execução
     working_dir: /app
     # Lista de volumes (diretórios) mapeados de fora para dentro do container
@@ -33,7 +33,7 @@ services:
     # na notação porta_de_fora:porta_de_dentro
     ports:
       # Expõe a porta padrão da aplicação: altere aqui caso use outra porta
-      - 3000:3000
+      - 4000:4000
     # Configura as variáveis de ambiente dentro do container
     environment:
       MYSQL_USER: root
@@ -41,14 +41,14 @@ services:
       MYSQL_HOST: db # Nome do service logo abaixo
       JWT_SECRET: secretJWT
       API_HOST: 'node'
-      API_PORT: 3000
+      API_PORT: 4000
       NODE_ENV: 'development'
     networks:
       - blogs_api_net
 
   # Serviço que irá rodar o banco de dados
   db:
-    container_name: blogs_api_db
+    container_name: tp_blogs_api_db
     image: mysql:8.0.23
     # Indica de forma fixa a plataforma na qual o banco irá rodar
     platform: linux/x86_64
