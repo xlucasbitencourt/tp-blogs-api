@@ -5,7 +5,7 @@ const validation = async (req, res, next) => {
   if (!name) return res.status(400).json({ message: '"name" is required' });
 
   const check = await categoryService.getByName(name);
-  if (check) return res.status(400).json({ message: 'Category already exists' });
+  if (check) return res.status(409).json({ message: 'Category already exists' });
   return next();
 };
 
